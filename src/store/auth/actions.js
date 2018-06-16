@@ -7,12 +7,3 @@ return {
 }
 }
 
-export const registrationForm = text => {
-  return {  
-    type: CONSTANTS.REGISTRATION_FORM,
-    payload:{user:text},
-    payload:{mail:text},
-    payload:{dateCreation:text}
-  }
-  }
-
