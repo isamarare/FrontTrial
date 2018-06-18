@@ -1,2 +1,1 @@
 export const CHANGE_NAME = 'CHANGE_NAME';
-export const REGISTRATION_FORM = 'REGISTRATION_FORM';

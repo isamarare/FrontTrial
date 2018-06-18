@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import { auth,registrationForm } from "./auth"
+import { auth } from "./auth"
+import { brotherhood } from "./brotherhood"
 import { reducer as formReducer } from 'redux-form'
+
 
 import {
     routerReducer,
@@ -9,7 +11,8 @@ import {
 export default combineReducers({
   auth:auth,
   router: routerReducer,
-  form: formReducer
+  form: formReducer,
+  brotherhood:brotherhood
 }
 
 )
