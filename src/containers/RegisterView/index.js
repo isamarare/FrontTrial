@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { getAllBrotherhoods, addBrotherhood, deleteBrotherhood,updateBrotherhood } from '../../store/brotherhood';
 import { BrotherhoodForm } from '../BrotherhoodForm';
+import { BrotherhoodList } from '../BrotherhoodList';
 
 
 class RegisterViewContainer extends React.Component {
@@ -12,10 +13,14 @@ class RegisterViewContainer extends React.Component {
   render(){
 
         return (
-          <div>
-              {this.props.brotherhoods.map((brotherhood)=> <BrotherhoodForm initialValues={brotherhood}  key={brotherhood.id} formName ={`brotherhood-${brotherhood.id}`} 
-              onDelete= {() => this.props.deleteBrotherhood(brotherhood.id)} onSubmit= {(formData) => this.props.updateBrotherhood(brotherhood.id,formData)}/>)}
-            <BrotherhoodForm title = 'Create' formName = 'create' onSubmit = {this.props.addBrotherhood}/>
+
+          <div> 
+            <section className='container'>
+            <BrotherhoodList/>
+            <div className="box">
+            <BrotherhoodForm title = 'Registra tu hermandad' formName = 'create' onSubmit = {this.props.addBrotherhood}/>
+            </div>
+            </section>
           </div>
         )
     }

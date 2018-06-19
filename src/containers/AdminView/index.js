@@ -1,36 +1,41 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import { getAllBrotherhoods, addBrotherhood, deleteBrotherhood,updateBrotherhood } from '../../store/brotherhood';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getAllBrotherhoods, addBrotherhood, deleteBrotherhood, updateBrotherhood } from '../../store/brotherhood';
 import { AdminForm } from '../AdminForm';
-
+import './style.css'
 
 
 class AdminViewContainer extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getAllBrotherhoods()
-  }  
-  render(){
+  }
+  render() {
 
-        return (
+    return (
+      <div className='wrapper'>
+        <header className='grid'>
+          <h4 class="label">Position</h4>
+          <h4 class="label">email</h4>
+          <h4 class="label">User</h4>
 
-    <table>
-      <tr>
-        <td>name</td>
-        <td>email</td>
-      </tr>
-      {this.props.brotherhoods.map((brotherhood)=> <AdminForm initialValues={brotherhood}  key={brotherhood.id} formName ={`brotherhood-${brotherhood.id}`}  
-      onDelete= {() => this.props.deleteBrotherhood(brotherhood.id)} onSubmit= {(formData) => this.props.updateBrotherhood(brotherhood.id,formData)}/>)}
-</table>
-            // <BrotherhoodForm title = 'Create' formName = 'create' onSubmit = {this.props.addBrotherhood}/>
-        )
-    }
+          {/* <h4 class="title is-4">Title 4</h4> */}
+
+        </header>
+
+        {this.props.brotherhoods.map((brotherhood) => <AdminForm className='grid' initialValues={brotherhood} key={brotherhood.id} formName={`brotherhood-${brotherhood.id}`}
+          onDelete={() => this.props.deleteBrotherhood(brotherhood.id)} onSubmit={(formData) => this.props.updateBrotherhood(brotherhood.id, formData)} />)}
+      </div>
+    )
+
+  }
+
 }
 
-const mapStateToProps = (state,ownProps) => ({
-brotherhoods:state.brotherhood.all
+const mapStateToProps = (state, ownProps) => ({
+  brotherhoods: state.brotherhood.all
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({getAllBrotherhoods,addBrotherhood,deleteBrotherhood,updateBrotherhood},dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getAllBrotherhoods, addBrotherhood, deleteBrotherhood, updateBrotherhood }, dispatch)
 
-export const AdminView = connect(mapStateToProps,mapDispatchToProps)(AdminViewContainer)
+export const AdminView = connect(mapStateToProps, mapDispatchToProps)(AdminViewContainer)

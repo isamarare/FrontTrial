@@ -2,7 +2,6 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-
   
 
 let AdminFormContainer = (props) => {
@@ -12,19 +11,19 @@ let AdminFormContainer = (props) => {
       formData.append('name', data.name)
       formData.append('email', data.email)
       formData.append('created', data.created)
+      formData.append('position', data.position)
       props.onSubmit(formData)
 
   }
-  return <form onSubmit={handleSubmit(onFormSubmit)}> 
-  <tr>
-      <React.Fragment>
-        <td><Field name="name" component="input" type="text" /></td>
-        <td><Field name="email" component="input" type="email" /></td>
-      
-      <td><button type="submit">Submit</button></td>
-      {props.onDelete && <td><button onClick={props.onDelete}>Delete</button></td>}
-      </React.Fragment>
-    </tr>
+  return <form className={props.className} onSubmit={handleSubmit(onFormSubmit)}> 
+        <Field className="input" name="position" component="input" type="number" />
+        <Field className="input" name="name" component="input" type="text" />
+        <Field className="input" name="email" component="input" type="email" />
+        
+
+
+      <button className = "button is-link"type="submit">Submit</button>
+      {props.onDelete && <button className = "button is-danger" onClick={props.onDelete}>Delete</button>}
 </form>
 }
 
