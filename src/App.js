@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createStore, applyMiddleware,compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducers from './store/root-reducers';
 import {
@@ -12,13 +12,14 @@ import { Link } from 'react-router-dom'
 import ReduxThunk from 'redux-thunk'
 import { RegisterView } from './containers/RegisterView';
 import { AdminView } from './containers/AdminView';
+import { LoginPage } from './containers/LoginPage';
 
 const history = createHashHistory();
-const middleware = [routerMiddleware(history),ReduxThunk];
+const middleware = [routerMiddleware(history), ReduxThunk];
 
 const composeEnhancers =
   typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
@@ -32,17 +33,19 @@ const store = createStore(rootReducers,
 class App extends Component {
   render() {
     return (
-    <Provider store={store}>
-    <ConnectedRouter history={history}>
-    <div>  
-    <Route exact path="/" render={()=><div><Link to="/register">Registra tu hermandad rociero</Link></div>} />
-    <Route exact path="/register" render={()=><RegisterView/>} />
-    {/* <Route exact path="/login" render={()=><RegisterView/>} />
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <div>
+            <Route exact path="/" render={() => <div><Link to="/register">Registra tu hermandad rociero</Link> <Link to="/login">Login</Link></div>} />
+            <Route exact path="/register" render={() => <RegisterView />} />
+            <Route exact path="/admin" render={() => <AdminView />} />
+            <Route exact path="/login" render={() => <LoginPage />} />
+            {/* <Route exact path="/login" render={()=><RegisterView/>} />
     <Route exact path="/admin" render={()=><RegisterView/>} /> */}
-    <Route exact path="/admin" render={()=><AdminView/>} />
-    </div>
-    </ConnectedRouter>
-    </Provider>
+            
+          </div>
+        </ConnectedRouter>
+      </Provider>
     );
   }
 }

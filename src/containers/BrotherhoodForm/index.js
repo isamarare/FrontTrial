@@ -3,8 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 
-  
-
 let BrotherhoodFormContainer = (props) => {
   const { handleSubmit } = props;
   const onFormSubmit = (data) => {
@@ -15,10 +13,11 @@ let BrotherhoodFormContainer = (props) => {
       props.onSubmit(formData)
 
   }
+  
   return <div><form display = "inline-flex" onSubmit={handleSubmit(onFormSubmit)}> 
 
   <div className="field">
-  <h1 class="title is-3">{props.title}</h1>
+  <h1 className="title is-3">{props.title}</h1>
   <label className="label" htmlFor="name" >First Name</label>
   <div className="control">
   <Field className="input" name="name" component="input" type="text" placeholder="Text input" required/>

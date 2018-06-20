@@ -12,7 +12,8 @@ export default combineReducers({
   auth:auth,
   router: routerReducer,
   form: formReducer,
-  brotherhood:brotherhood
+  brotherhood:brotherhood,
+
 }
 
 )

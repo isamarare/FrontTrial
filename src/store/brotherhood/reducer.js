@@ -29,7 +29,7 @@ export function brotherhood(state = initialState, action) {
             return {
             ...state,all:state.all.filter( _brotherhood => _brotherhood.id !== action.payload.id)
         } }
-        case CONSTANTS.DELETE_BROTHERHOOD_SUCCESS:{
+        case CONSTANTS.PUT_BROTHERHOOD_SUCCESS:{
             return {
             ...state,all:state.all.map(_brotherhood => {
                 if(_brotherhood.id===action.payload.response.data.id){
