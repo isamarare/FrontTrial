@@ -17,27 +17,25 @@ class BrotherhoodListContainer extends React.Component {
             Lista de Hermandades
       </h1>
         </div>
-
-          <table className="table is-striped container" >
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Creation Date</th>
+        <table className="table is-striped container" >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Creation Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.brotherhoods.map((brotherhood, index) =>
+              <tr key={index}>
+                <td >{brotherhood.name}</td>
+                <td >{brotherhood.email}</td>
+                <td >{moment(brotherhood.created).format('DD-MM-YYYY')}</td>
               </tr>
-            </thead>
-            <tbody>
-              {this.props.brotherhoods.map((brotherhood, index) =>
-                <tr key={index}>
-                  <td >{brotherhood.name}</td>
-                  <td >{brotherhood.email}</td>
-                  <td >{moment(brotherhood.created).format('DD-MM-YYYY')}</td>
-                </tr>
-              )
-              }
-            </tbody>
-          </table>
-
+            )
+            }
+          </tbody>
+        </table>
       </div>
     </section >
     )

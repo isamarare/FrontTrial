@@ -1,5 +1,5 @@
 import * as CONSTANTS from "./constants"
-import { APIAuth,APINoAuth } from "../../API";
+import { APIAuth, APINoAuth } from "../../API";
 
 
 export const postBrotherhood = text => {
@@ -56,7 +56,7 @@ export const deleteBrotherhood = (id) => async dispatch => {
       type: CONSTANTS.DELETE_BROTHERHOOD_REQUEST,
       payload: {}
     })
-    const response = await APIAuth.delete(`brotherhood/${id}/`)
+    await APIAuth.delete(`brotherhood/${id}/`)
     dispatch({
       type: CONSTANTS.DELETE_BROTHERHOOD_SUCCESS,
       payload: { id }

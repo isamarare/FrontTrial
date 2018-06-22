@@ -6,7 +6,7 @@ const Footer = () => (
             <div className="content has-text-centered">
                 <p>
                     <strong>Rocio</strong> vamos a conseguir llegar hasta ti sin falta!
-    </p>
+                </p>
             </div>
         </footer>
     </div>

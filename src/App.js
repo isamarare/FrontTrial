@@ -8,13 +8,12 @@ import {
 } from "react-router-redux";
 import { createHashHistory } from "history";
 import { Route } from "react-router";
-import { Link } from 'react-router-dom'
 import ReduxThunk from 'redux-thunk'
 import { RegisterView } from './containers/RegisterView';
 import { AdminView } from './containers/AdminView';
 import { LoginPage } from './containers/LoginPage';
 import Footer from './components/Footer'
-import Header from './components/Header'
+import { Header } from './containers/Header'
 import { BrotherhoodList } from './containers/BrotherhoodList';
 const history = createHashHistory();
 const middleware = [routerMiddleware(history), ReduxThunk];
@@ -23,7 +22,6 @@ const composeEnhancers =
   typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
     }) : compose;
 
 const enhancer = composeEnhancers(
@@ -39,8 +37,7 @@ class App extends Component {
         <ConnectedRouter history={history}>
           <div>
             <Header />
-            {/* <Route exact path="/" render={() => <div><Link to="/register">Registra tu hermandad rociero</Link> <Link to="/login">Login</Link></div>} /> */}
-            <Route exact path="/" render={() => <div><BrotherhoodList/></div>} />
+            <Route exact path="/" render={() => <div><BrotherhoodList /></div>} />
             <Route exact path="/register" render={() => <RegisterView />} />
             <Route exact path="/admin" render={() => <AdminView />} />
             <Route exact path="/login" render={() => <LoginPage />} />

@@ -17,24 +17,22 @@ let LoginFormContainer = (props) => {
   return <div className="hero is-medium is-bold">
     <div className="hero-body">
       <div className="container">
-        <div className="columns is-centered">
+        <div className="columns is-centered control">
           <article className="card is-rounded">
             <div className="card-content">
+              {props.errorName != '' ? <label className="label is-small has-text-danger">Usuario y/o contraseña incorrecto</label> : <span></span>}
               <form onSubmit={handleSubmit(onFormSubmit)}>
                 <div className="control field">
                   <Field className="input" name="username" component="input" type="text" placeholder="Usuario" />
                 </div>
                 <div className="control field">
                   <Field className="input" name="password" component="input" type="password" placeholder="Password" />
-                  <i className="fa fa-lock"></i>
                 </div>
                 <button className="button is-success is-medium is-fullwidth" type="submit">
-                  <i className="fa fa-user"></i>
                   Login
-                    </button>
+                </button>
               </form>
             </div>
-
           </article>
         </div>
       </div>
@@ -42,7 +40,8 @@ let LoginFormContainer = (props) => {
   </div>
 }
 const mapStateToProps = (state, ownProps) => ({
-  form: ownProps.formName
+  form: ownProps.formName,
+  error: ownProps.errorName
 })
 
 export const LoginForm = compose(connect(mapStateToProps), reduxForm({}))(LoginFormContainer)

@@ -20,8 +20,8 @@ let AdminFormContainer = (props) => {
     <Field className="input" name="name" component="input" type="text" />
     <Field className="input" name="email" component="input" type="email" />
     <Field className="input" name="created" component="input" type="text" />
-    <button className="button is-link" type="submit">Submit</button>
-    {props.onDelete && <button className="button is-danger" onClick={props.onDelete}>Delete</button>}
+    <button className="button is-link" onClick={props.onSubmit}>Submit</button>
+    {props.onDelete && <button className="button is-danger" onClick={props.onDelete} type="submit" >Delete</button>}
   </form>
 }
 

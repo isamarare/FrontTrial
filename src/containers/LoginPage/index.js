@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { LoginForm } from '../LoginForm'
 import { postLogin } from '../../store/auth';
+import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 
 class LoginPageContainer extends React.Component {
@@ -11,7 +11,7 @@ class LoginPageContainer extends React.Component {
         return (
             <div className="field is-grouped is-grouped-centered">
             {this.props.isLogged ? <Redirect to="/admin"/> : <Redirect to="/login"/> }
-                <LoginForm formName = 'login' onSubmit = {this.props.postLogin}/>
+                <LoginForm formName = 'login' onSubmit = {this.props.postLogin} errorName = {this.props.error}/>
             </div>
         )
     }
@@ -19,7 +19,8 @@ class LoginPageContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     auth: state.auth.all,
-    isLogged: state.auth.isLogged
+    isLogged: state.auth.isLogged,
+    error: state.auth.error
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({postLogin}, dispatch)

@@ -6,3 +6,11 @@
     background-color: #999;
 
 }
+
+.navbar-menu{
+max-width: 100%;
+overflow: auto;
+display: inline;
+}
+
+

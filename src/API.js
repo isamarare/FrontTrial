@@ -12,8 +12,6 @@ export const APINoAuth = axios.create({
   }
 
 });
-
-
 export const setAuthorizationToken = (token) => {
   if (token) {
     APIAuth.defaults.headers.common['authorization'] = `Bearer ${token}`;

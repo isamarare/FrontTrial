@@ -5,14 +5,14 @@ import { reducer as formReducer } from 'redux-form'
 
 
 import {
-    routerReducer,
-  } from "react-router-redux";
+  routerReducer,
+} from "react-router-redux";
 
 export default combineReducers({
-  auth:auth,
+  auth: auth,
   router: routerReducer,
   form: formReducer,
-  brotherhood:brotherhood,
+  brotherhood: brotherhood,
 
 }
 
