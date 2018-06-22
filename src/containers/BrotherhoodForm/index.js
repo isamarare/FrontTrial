@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
+import moment from 'moment'
 import { compose } from 'redux'
 import './style.css'
 
@@ -10,7 +11,7 @@ let BrotherhoodFormContainer = (props) => {
     let formData = new FormData();
     formData.append('name', data.name)
     formData.append('email', data.email)
-    formData.append('created', data.created)
+    formData.append('created', moment(data.created).format("YYYY-MM-DD HH:mm:ss"))
     props.onSubmit(formData)
 
   }
@@ -34,7 +35,7 @@ let BrotherhoodFormContainer = (props) => {
               <i className="bar"></i>
             </div>
             <div className="control">
-              <Field className="input" name="created" component="input" type="datetime-local" required />
+              <Field className="input" name="created" component="input" type="date" required />
               <label className="label">Fecha de creación</label>
               <i className="bar"></i>
             </div>
