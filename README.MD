@@ -12,4 +12,11 @@ Requirements:
 
 You are ready to start :D
 
+5. In order to login as admin you can use a pre-created user
+
+-user: admin
+
+-password: password123
+
+
 Thanks!
