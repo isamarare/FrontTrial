@@ -20,11 +20,9 @@ const HeaderComponent = ({isLogged,all}) => {return (
                 <Link to="/" className="navbar-item" >
                   <b>Home</b>
                 </Link>
-                <Link to="/register" className="na
-                vbar-item">
+                <Link to="/register" className="navbar-item">
                   <b> Registrate</b>
                 </Link>
-
                 {isLogged ? 
                   <React.Fragment>
                     <Link to="/admin" className="navbar-item">
