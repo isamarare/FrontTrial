@@ -1,35 +1,29 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { getAllBrotherhoods, addBrotherhood, deleteBrotherhood,updateBrotherhood } from '../../store/brotherhood';
+import { Redirect } from 'react-router-dom'
+import { addBrotherhood } from '../../store/brotherhood';
 import { BrotherhoodForm } from '../BrotherhoodForm';
-import { BrotherhoodList } from '../BrotherhoodList';
+
 
 
 class RegisterViewContainer extends React.Component {
-  componentDidMount(){
-    this.props.getAllBrotherhoods()
-  }  
   render(){
-
         return (
-
           <div> 
-            <section className='container'>
-            <BrotherhoodList/>
-            <div className="box">
+            {this.props.isAdded ? <Redirect to="/"/> : <Redirect to="/register"/> }
             <BrotherhoodForm title = 'Registra tu hermandad' formName = 'create' onSubmit = {this.props.addBrotherhood}/>
-            </div>
-            </section>
           </div>
         )
     }
 }
 
 const mapStateToProps = (state,ownProps) => ({
-brotherhoods:state.brotherhood.all
+brotherhoods:state.brotherhood.all,
+isAdded:state.brotherhood.isAdded
+
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({getAllBrotherhoods,addBrotherhood,deleteBrotherhood,updateBrotherhood},dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({addBrotherhood},dispatch)
 
 export const RegisterView = connect(mapStateToProps,mapDispatchToProps)(RegisterViewContainer)

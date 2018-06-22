@@ -2,7 +2,8 @@ import * as CONSTANTS from './constants';
 
 const initialState = {
   all: [],
-  isLoading:false
+  isLoading:false,
+  isAdded:false
 }
 
 export function brotherhood(state = initialState, action) {
@@ -15,19 +16,19 @@ export function brotherhood(state = initialState, action) {
             return {
             ...state,
             isLoading:false,
-            all:action.payload.response.data
+            all:action.payload.response.data, isAdded:false
         } }
         case CONSTANTS.GET_ALL_BROTHERHOOD_FAILURE:{
             return {
-            ...state,isLoading:false
+            ...state,isLoading:false, isAdded:false
         } }
         case CONSTANTS.POST_BROTHERHOOD_SUCCESS:{
             return {
-            ...state,all:state.all.concat(action.payload.response.data)
+            ...state,all:state.all.concat(action.payload.response.data),isAdded:true
         } }
         case CONSTANTS.DELETE_BROTHERHOOD_SUCCESS:{
             return {
-            ...state,all:state.all.filter( _brotherhood => _brotherhood.id !== action.payload.id)
+            ...state,all:state.all.filter( _brotherhood => _brotherhood.id !== action.payload.id), isAdded:false
         } }
         case CONSTANTS.PUT_BROTHERHOOD_SUCCESS:{
             return {
@@ -37,7 +38,7 @@ export function brotherhood(state = initialState, action) {
                 }else{
                     return _brotherhood 
                 }
-            })
+            }), isAdded:false
         } }
         default:
           return state

@@ -1,0 +1,8 @@
+.bg-img { 
+    background-image: url(https://sevilla.abc.es/media/2017/05/25/s/virgendelrocio2--620x349.jpg) ;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size:  cover;
+    background-color: #999;
+
+}

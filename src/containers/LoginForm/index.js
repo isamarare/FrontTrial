@@ -14,12 +14,11 @@ let LoginFormContainer = (props) => {
     props.onSubmit(formData)
 
   }
-  return <div className="hero is-fullheight is-medium is-bold">
+  return <div className="hero is-medium is-bold">
     <div className="hero-body">
       <div className="container">
         <div className="columns is-centered">
           <article className="card is-rounded">
-
             <div className="card-content">
               <form onSubmit={handleSubmit(onFormSubmit)}>
                 <div className="control field">
@@ -29,7 +28,7 @@ let LoginFormContainer = (props) => {
                   <Field className="input" name="password" component="input" type="password" placeholder="Password" />
                   <i className="fa fa-lock"></i>
                 </div>
-                <button className="button is-primary is-medium is-fullwidth" type="submit">
+                <button className="button is-success is-medium is-fullwidth" type="submit">
                   <i className="fa fa-user"></i>
                   Login
                     </button>

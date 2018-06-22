@@ -2,7 +2,9 @@ import * as CONSTANTS from './constants';
 
 const initialState = {
   all: [],
-  isLoading:false
+  isLogged:false,
+  isLoading:false,
+  token:""
 }
 
 export function auth(state = initialState, action) {
@@ -16,8 +18,10 @@ export function auth(state = initialState, action) {
             return {
             ...state,
             isLoading:false,
-            all:action.payload.response.data
-        } }
+            isLogged:true,
+            all:action.payload.response.data,
+            token:action.payload.response.data.access_token
+        }}
         case CONSTANTS.POST_LOGIN_FAILURE:{
             return {
             ...state,isLoading:false

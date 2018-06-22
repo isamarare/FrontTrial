@@ -19,14 +19,15 @@ let AdminFormContainer = (props) => {
     <Field className="input" name="position" component="input" type="number" />
     <Field className="input" name="name" component="input" type="text" />
     <Field className="input" name="email" component="input" type="email" />
-
+    <Field className="input" name="created" component="input" type="text" />
     <button className="button is-link" type="submit">Submit</button>
     {props.onDelete && <button className="button is-danger" onClick={props.onDelete}>Delete</button>}
   </form>
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  form: ownProps.formName
+  form: ownProps.formName,
+  token: state.auth.token
 })
 
 export const AdminForm = compose(connect(mapStateToProps), reduxForm({}))(AdminFormContainer)

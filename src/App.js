@@ -13,7 +13,9 @@ import ReduxThunk from 'redux-thunk'
 import { RegisterView } from './containers/RegisterView';
 import { AdminView } from './containers/AdminView';
 import { LoginPage } from './containers/LoginPage';
-
+import Footer from './components/Footer'
+import Header from './components/Header'
+import { BrotherhoodList } from './containers/BrotherhoodList';
 const history = createHashHistory();
 const middleware = [routerMiddleware(history), ReduxThunk];
 
@@ -36,13 +38,13 @@ class App extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div>
-            <Route exact path="/" render={() => <div><Link to="/register">Registra tu hermandad rociero</Link> <Link to="/login">Login</Link></div>} />
+            <Header />
+            {/* <Route exact path="/" render={() => <div><Link to="/register">Registra tu hermandad rociero</Link> <Link to="/login">Login</Link></div>} /> */}
+            <Route exact path="/" render={() => <div><BrotherhoodList/></div>} />
             <Route exact path="/register" render={() => <RegisterView />} />
             <Route exact path="/admin" render={() => <AdminView />} />
             <Route exact path="/login" render={() => <LoginPage />} />
-            {/* <Route exact path="/login" render={()=><RegisterView/>} />
-    <Route exact path="/admin" render={()=><RegisterView/>} /> */}
-            
+            <Footer />
           </div>
         </ConnectedRouter>
       </Provider>

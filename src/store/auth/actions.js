@@ -1,5 +1,5 @@
 import * as CONSTANTS from "./constants"
-import {APILOGIN} from '../../API'
+import {APINoAuth, setAuthorizationToken} from '../../API'
 
 export const postLogin = (formData) => async dispatch => {
   try {
@@ -7,7 +7,8 @@ export const postLogin = (formData) => async dispatch => {
       type: CONSTANTS.POST_LOGIN_REQUEST,
       payload: {  }
     })
-    const response = await APILOGIN.post('o/token/', formData)
+    const response = await APINoAuth.post('o/token/', formData)
+    setAuthorizationToken(response.data.access_token)
     dispatch({
       type: CONSTANTS.POST_LOGIN_SUCCESS,
       payload: { response }

@@ -1,5 +1,5 @@
 import * as CONSTANTS from "./constants"
-import { API } from "../../API";
+import { APIAuth,APINoAuth } from "../../API";
 
 
 export const postBrotherhood = text => {
@@ -15,7 +15,7 @@ export const getAllBrotherhoods = () => async dispatch => {
       type: CONSTANTS.GET_ALL_BROTHERHOOD_REQUEST,
       payload: {}
     })
-    const response = await API.get('brotherhood/')
+    const response = await APINoAuth.get('brotherhood/')
     dispatch({
       type: CONSTANTS.GET_ALL_BROTHERHOOD_SUCCESS,
       payload: { response }
@@ -36,7 +36,7 @@ export const addBrotherhood = (formData) => async dispatch => {
       type: CONSTANTS.POST_BROTHERHOOD_REQUEST,
       payload: {}
     })
-    const response = await API.post('brotherhood/', formData)
+    const response = await APINoAuth.post('brotherhood/', formData)
     dispatch({
       type: CONSTANTS.POST_BROTHERHOOD_SUCCESS,
       payload: { response }
@@ -56,7 +56,7 @@ export const deleteBrotherhood = (id) => async dispatch => {
       type: CONSTANTS.DELETE_BROTHERHOOD_REQUEST,
       payload: {}
     })
-    const response = await API.delete(`brotherhood/${id}/`)
+    const response = await APIAuth.delete(`brotherhood/${id}/`)
     dispatch({
       type: CONSTANTS.DELETE_BROTHERHOOD_SUCCESS,
       payload: { id }
@@ -70,13 +70,13 @@ export const deleteBrotherhood = (id) => async dispatch => {
 }
 
 
-export const updateBrotherhood = (id, formData) => async dispatch => {
+export const updateBrotherhood = (id, formData, token) => async dispatch => {
   try {
     dispatch({
       type: CONSTANTS.PUT_BROTHERHOOD_REQUEST,
       payload: {}
     })
-    const response = await API.patch(`brotherhood/${id}/`, formData)
+    const response = await APIAuth.patch(`brotherhood/${id}/`, formData)
     dispatch({
       type: CONSTANTS.PUT_BROTHERHOOD_SUCCESS,
       payload: { response }
